@@ -30,7 +30,7 @@ public class App
     	this.someInput = new Scanner(System.in);
     	
     	//Starting Method
-    	private void sayHi()
+    	//private void sayHi()
     	{
     		this.today = new Date();
     		System.out.println("App say Hi at " +today);
