@@ -6,5 +6,14 @@ REM	need	to	be	changed	in	order	for	compile	to	work	on	your	machine
 REM	IF	JAVA_HOME	is	set	you	do	not	need	to	specify	the	path	just	java
 REM	---------------------------------------------------------------------
 
-C:\_DEV\Music_Pro>java -cp original-Music_Pro-v1.jar eannaRyan.Music_Pro.App
+
+
+
+rem java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App
+java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App -v
+rem java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App -help
+rem java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App -version
+
+echo "Press ENTER to close window"
+
 PAUSE
