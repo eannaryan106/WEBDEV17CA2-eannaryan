@@ -18,18 +18,18 @@ public class MenuItemFactory {
 		LOG = LogManager.getLogger(MenuItemFactory.class);
 	}
 
-	public IExecuatable getMenuItem(String className) {
+	public IExecutable getMenuItem(String className) {
 
 		if ("com.eannaRyan.Music_Pro.playlist.PlaylistViewMenuItem".equals(className)) {
-			return (IExecuatable) new PlaylistViewMenuItem();
+			return (IExecutable) new PlaylistViewMenuItem();
 		}
 
 		if ("com.eannaRyan.Music_Pro.music.MusicViewMenuItem".equals(className)) {
-			return (IExecuatable) new MusicViewMenuItem();
+			return (IExecutable) new MusicViewMenuItem();
 		}
 
 		if ("com.eannaRyan.Music_Pro.user.UserViewMenuItem".equals(className)) {
-			return (IExecuatable) new UserViewMenuItem();
+			return (IExecutable) new UserViewMenuItem();
 		}
 
 		// for each menu item take a copy of an if line above change the class it is
@@ -39,10 +39,10 @@ public class MenuItemFactory {
 		// this catches deliberetly undefined menu items and errors
 
 		if ("com.eannaRyan.Music_Pro.playlist.UndefinedMenuItem".equals(className)) {
-			return (IExecuatable) new UndefinedMenuItem();
+			return (IExecutable) new UndefinedMenuItem();
 		} else {
 			LOG.error("Undefined	class	requested" + className);
-			return (IExecuatable) new UndefinedMenuItem();
+			return (IExecutable) new UndefinedMenuItem();
 		}
 
 	}

@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
+import com.eannaRyan.Music_Pro.data.DataManagerSQLite;
+import com.eannaRyan.Music_Pro.menu.MenuBuilder;
 import joptsimple.OptionException;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
@@ -46,12 +48,16 @@ public class App {
 	// DATA
 	// ............................................................
 	// define attributes
+
 	private Scanner someInput;
 	private Date today;
+
 	// This is added to every class that needs to log with one change
 	// The getLogger( ) part should contain the name of the class its in
 	private static Logger LOG;
-	private static String VERSION = "0.4";
+
+	private static String VERSION = "0.5";
+
 	// The URL and name of the SQLite database
 	// TODO: Remove database location and name hard coding and pass in as a
 	// parameter in the next version
@@ -60,6 +66,7 @@ public class App {
 
 	// CONSTRUCTORS
 	// ............................................................
+
 	public App(Level logLevel) {
 		// associate logging with this class so know the messages that came from objects
 		// of this class
@@ -75,8 +82,15 @@ public class App {
 
 		this.someInput = new Scanner(System.in);
 
-		// do something here: Display the list of users from the database
-		showListOfUsers();
+		// set the database file to use
+		DataManagerSQLite.getInstance().setDataFile(this.databaseFile);
+
+		MenuBuilder theMenu = new MenuBuilder();
+
+		// theMenu.print();
+		// LOG.debug(theMenu.display());
+
+		theMenu.getMenu().display();
 
 		// pause before exit (this is only useful if an error occurs)
 		System.out.println("	\n	Press	enter	to	exit	the	program");
@@ -91,53 +105,6 @@ public class App {
 
 	// METHODS used by main() or debug methods - note they are static methods
 	// ............................................................
-	/**
-	 * write out the users in a users table for the database specified
-	 * 
-	 */
-	private void showListOfUsers() {
-		this.today = new Date();
-		LOG.debug("Getting	list	of	Users	from	Database	as	of	" + today);
-
-		// if log level id debug e.g. -v parameter used then show database file being
-		// used
-		LOG.debug("Database	file:" + this.databaseFile);
-
-		// Get JDBC connection to database
-		Connection connection = null;
-
-		try {
-			// create a database connection
-			connection = DriverManager.getConnection(this.databaseFile);
-
-			Statement statement = connection.createStatement();
-			statement.setQueryTimeout(30); // set timeout to 30 sec.
-
-			// Run the query
-
-			ResultSet resultSet = statement.executeQuery("select	*	from	user");
-
-			// iterate through the results create User objects put in the ListArray
-
-			while (resultSet.next()) {
-				LOG.debug("User	found:	" + resultSet.getString("userName"));
-			}
-
-		} catch (SQLException e) {
-			// if the error message is "out of memory",
-			// it probably means no database file is found
-			LOG.error(e.getMessage());
-		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-			} catch (SQLException e) {
-				// connection close failed.
-				LOG.error(e.getMessage());
-			}
-		}
-
-	}// EOM
 
 	/**
 	 * action the arguments presented at the command line instantiate the App class
@@ -149,9 +116,10 @@ public class App {
 
 			// define the allowed arguments
 			optionParser.acceptsAll(Arrays.asList("v", "verbose"),
-					"Set logging	level	to	DEBUG	to	see	all	levels	of	log	messages").forHelp();
-			optionParser.acceptsAll(Arrays.asList("h", "help"), "Display help/usage	information").forHelp();
-			optionParser.acceptsAll(Arrays.asList("r", "version"), "Display program	version	information").forHelp();
+					"Set	logging	level	to	DEBUG	to	see	all	levels	of	log	messages").forHelp();
+
+			optionParser.acceptsAll(Arrays.asList("h", "help"), "Display	help/usage	information").forHelp();
+			optionParser.acceptsAll(Arrays.asList("r", "version"), "Display	program	version	information").forHelp();
 
 			final OptionSet options = optionParser.parse(args);
 
@@ -221,6 +189,7 @@ public class App {
 		LOG.warn("Log	test:	Test	printed	on	warn");
 		LOG.error("Log	test:	Test	printed	on	error");
 		LOG.fatal("Log	test:	Test	printed	on	fatal");
+
 		LOG.info("Appending	string:	{}.", "Application	log	test	message	-	Hi");
 
 	}// EOM
