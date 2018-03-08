@@ -11,8 +11,8 @@ REM	---------------------------------------------------------------------
 
 rem java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App
 java -cp target\Music_Pro-v6.jar com.eannaRyan.Music_Pro.App -v
-java -cp target/Music_Pro-v6.jar com.eannaRyan.Music_Pro.App -database jdbc:sqlite:database/oreallyoreilly.db
-rem java -cp target/Music_Pro-v6.jar com.eannaRyan.Music_Pro.App -v -d jdbc:sqlite:database/oreallyoreilly.db
+rem java -cp target/Music_Pro-v6.jar com.eannaRyan.Music_Pro.App -database jdbc:sqlite:database/oreallyoreilly.db
+java -cp target/Music_Pro-v6.jar com.eannaRyan.Music_Pro.App -v -d jdbc:sqlite:database/oreallyoreilly.db
 rem java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App -help
 rem java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App -version
 
