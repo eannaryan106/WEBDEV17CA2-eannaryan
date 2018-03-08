@@ -4,7 +4,7 @@
   <groupId>com.eannaRyan</groupId>
   <artifactId>Music_Pro</artifactId>
   <name>Music_Pro</name>
-  <version>v1</version>
+  <version>v6</version>
   <url>http://maven.apache.org</url>
   <build>
     <plugins>

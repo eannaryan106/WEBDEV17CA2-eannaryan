@@ -35,7 +35,7 @@ public class MenuBuilder {
 
 		// Headings
 
-		MenuHeading playHeading = new MenuHeading(1, "Review","Music	and	Life	playlist	review");
+		MenuHeading playHeading = new MenuHeading(1, "Review", "Music	and	Life	playlist	review");
 
 		MenuHeading maintainHeading = new MenuHeading(2, "Maintenance", "Add	users,	playlists	and	music");
 
@@ -50,48 +50,40 @@ public class MenuBuilder {
 
 		// play menu
 
-		playHeading.add(new MenuItem(1, 
-				"List	Playlists",
-				"List	the	playlists	available	in	the	system",
+		playHeading.add(new MenuItem(1, "List	Playlists", "List	the	playlists	available	in	the	system",
 				"com.eannaRyan.Music_Pro.playlist.PlaylistViewMenuItem"));
-		
-		playHeading.add(new MenuItem(2,
-				"List	Music",
-				"List	the	music	available	in	the	system",
+
+		playHeading.add(new MenuItem(2, "List	Music", "List	the	music	available	in	the	system",
 				"com.eannaRyan.Music_Pro.music.MusicViewMenuItem"));
 
-		playHeading.add(new MenuItem
-				(3,
-				"List	Users",
-				"List	the	users	in	the	system",
-				"com.eannaRyan.Music_Pro.user.UserViewMenuItem"
-				));
+		playHeading.add(new MenuItem(3, "List	Users", "List	the	users	in	the	system",
+				"com.eannaRyan.Music_Pro.user.UserViewMenuItem"));
 
-			// maintain menu
+		// maintain menu
 
 		maintainHeading
-				.add(new MenuItem(1, "Add	User", "Add	a	user", "com.oreallyoreilly.pythia.menu.UndefinedMenuItem"));
+				.add(new MenuItem(1, "Add	User", "Add	a	user", "com.eannaRyan.Music_Pro.menu.UndefinedMenuItem"));
 
-		maintainHeading.add(
-				new MenuItem(2, "Add	Music", "Add	music", "com.oreallyoreilly.pythia.menu.UndefinedMenuItem"));
+		maintainHeading
+				.add(new MenuItem(2, "Add	Music", "Add	music", "com.eannaRyan.Music_Pro.menu.UndefinedMenuItem"));
 		maintainHeading.add(new MenuItem(3, "Add	Playlist", "Add	a	playlist",
-				"com.oreallyoreilly.pythia.menu.UndefinedMenuItem"));
+				"com.eannaRyan.Music_Pro.menu.UndefinedMenuItem"));
 
-		maintainHeading.add(
-				new MenuItem(4, "Edit	Music", "Edit	music", "com.oreallyoreilly.pythia.menu.UndefinedMenuItem"));
+		maintainHeading
+				.add(new MenuItem(4, "Edit	Music", "Edit	music", "com.eannaRyan.Music_Pro.menu.UndefinedMenuItem"));
 
 		maintainHeading.add(new MenuItem(5, "Edit	Playlist", "Edit	a	playlist",
-				"com.oreallyoreilly.pythia.menu.UndefinedMenuItem"));
+				"com.eannaRyan.Music_Pro.menu.UndefinedMenuItem"));
 		// admin menu
 
 		adminHeading.add(new MenuItem(1, "Remove	a	User", "Remove	a	user",
-				"com.oreallyoreilly.pythia.menu.UndefinedMenuItem"));
+				"com.eannaRyan.Music_Pro.menu.UndefinedMenuItem"));
 
 		adminHeading.add(
 				new MenuItem(2, "Remove	Music", "Remove	music", "com.oreallyoreilly.pythia.menu.UndefinedMenuItem"));
 
 		adminHeading.add(new MenuItem(3, "Remove	a	Playlist", "Remove	a	playlist",
-				"com.oreallyoreilly.pythia.menu.UndefinedMenuItem"));
+				"com.eannaRyan.Music_Pro.menu.UndefinedMenuItem"));
 	}
 
 	public Menu getMenu() {

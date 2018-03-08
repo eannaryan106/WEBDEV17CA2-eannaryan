@@ -6,7 +6,7 @@ import com.eannaRyan.Music_Pro.menu.ConsoleControls;
 
 public class UserConsoleListView {
 
-	ArrayList<User> userList;
+	ArrayList <User> userList;
 
 	public UserConsoleListView() {
 	}
@@ -17,12 +17,11 @@ public class UserConsoleListView {
 
 	public void display() {
 
-		System.out
-				.println(ConsoleControls.ANSI_YELLOW_BRIGHT + "...	USER	VIEWER	..." + ConsoleControls.ANSI_RESET);
+		System.out.println(ConsoleControls.ANSI_YELLOW_BRIGHT + "...USER VIEWER	..." + ConsoleControls.ANSI_RESET);
 		System.out.println("\n");
 		Iterator<User> iterator = this.userList.iterator();
 		while (iterator.hasNext()) {
-			User aUser = (User) iterator.next();
+			User aUser = (User)iterator.next();
 			aUser.display();
 		}
 	}

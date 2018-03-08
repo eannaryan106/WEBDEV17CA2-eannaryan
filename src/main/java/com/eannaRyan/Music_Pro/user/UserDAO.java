@@ -48,7 +48,7 @@ public class UserDAO implements IUserDAO {
 
 			// Run the query
 
-			ResultSet resultSet = statement.executeQuery("select	*	from	user");
+			ResultSet resultSet = statement.executeQuery("select * from	user");
 
 			// iterate through the results create User objects put in the ListArray
 
