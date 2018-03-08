@@ -6,8 +6,13 @@ REM	need	to	be	changed	in	order	for	compile	to	work	on	your	machine
 REM	IF	JAVA_HOME	is	set	you	do	not	need	to	specify	the	path	just	java
 REM	---------------------------------------------------------------------
 
+"C:\Program Files (x86)\Java\jre1.8.0_144\bin\java.exe"
+C:\_DEV\Music_Pro\src\main\java\com\eannaRyan\Music_Pro
 
+java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App
+java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App -v
 
+<<<<<<< HEAD
 
 rem java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App
 java -cp target\Music_Pro-v6.jar com.eannaRyan.Music_Pro.App -v
@@ -16,6 +21,10 @@ java -cp target/Music_Pro-v6.jar com.eannaRyan.Music_Pro.App -v -d jdbc:sqlite:d
 rem java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App -help
 rem java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App -version
 
+=======
+java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App -help
+java -cp target\Music_Pro-v1.jar com.eannaRyan.Music_Pro.App -version
+>>>>>>> parent of 0bc6c40... The MVC's or Music,Playlist and User are working, Crossed out overrides
 
 echo "Press ENTER to close window"
 

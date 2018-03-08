@@ -21,7 +21,6 @@ import java.util.Scanner;
  *         https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
  * 
  *****************************************************************/
-
 public class Menu extends MenuWidget {
 
 	ArrayList<MenuWidget> menu = new ArrayList<MenuWidget>();
@@ -31,7 +30,12 @@ public class Menu extends MenuWidget {
 
 	int selection;
 	Scanner input = new Scanner(System.in);
+
+	// generic object factory
 	Factory f = Factory.getFactory();
+
+	// Factory method pattern version
+	MenuItemFactory executorFactory = new MenuItemFactory();
 
 	// CONSTRUCTORS
 	// ............................................................
@@ -40,7 +44,6 @@ public class Menu extends MenuWidget {
 		this.name = name;
 		this.description = description;
 	}
-
 	// METHODS
 	// ............................................................
 
@@ -91,7 +94,7 @@ public class Menu extends MenuWidget {
 
 			} // EOW
 
-			System.out.println("\nEnter 0 to exit or a menu number to select that function --> ");
+			System.out.println("\nEnter	0	to	exit	or	a	menu	number	to	select	that	function	-->	");
 			this.selection = this.input.nextInt();
 
 			ConsoleControls.clearConsole();
@@ -100,21 +103,26 @@ public class Menu extends MenuWidget {
 				exitMenu = 1;
 			} else if (menuOfExecutors.containsKey(this.selection)) {
 				if (menuOfExecutors.get(this.selection).equalsIgnoreCase("undefinedMenuItem")) {
-					System.out.println(ConsoleControls.ANSI_YELLOW + "picked : " + menuOfExecutors.get(this.selection)
-							+ ConsoleControls.ANSI_RESET);
+					System.out.println(ConsoleControls.ANSI_YELLOW + "picked	:	"
+							+ menuOfExecutors.get(this.selection) + ConsoleControls.ANSI_RESET);
 				} else {
 					ConsoleControls.clearConsole();
-					try {
-						Object obj = f.getObject(menuOfExecutors.get(this.selection));
-						exe = (IExecutable) obj;
-						exe.execute();
-					} catch (FactoryException fe) {
-						System.out.println(ConsoleControls.ANSI_RED + "Failed to create instance : "
-								+ menuOfExecutors.get(this.selection) + ConsoleControls.ANSI_RESET);
-					}
+
+					// Generic Factory Call
+					/*
+					 * try { Object obj = f.getObject( menuOfExecutors.get(this.selection) ); exe =
+					 * (IExecuatable) obj; exe.execute(); } catch ( FactoryException fe) {
+					 * System.out.println(ConsoleControls.ANSI_RED
+					 * +"Failed	to	create	instance	:	" + menuOfExecutors.get(this.selection)
+					 * + ConsoleControls.ANSI_RESET); }
+					 */
+
+					// Factory Method Pattern version
+					executorFactory.getMenuItem(menuOfExecutors.get(this.selection)).execute();
+
 				}
 			} else {
-				System.out.println(ConsoleControls.ANSI_RED + " >> Invalid option" + ConsoleControls.ANSI_RESET);
+				System.out.println(ConsoleControls.ANSI_RED + "	>>	Invalid	option" + ConsoleControls.ANSI_RESET);
 			}
 
 		} while (exitMenu == 0);
@@ -137,7 +145,7 @@ public class Menu extends MenuWidget {
 
 	public String toString() {
 
-		StringBuffer sb = new StringBuffer("\nMENU : " + getDisplayName() + "\n");
+		StringBuffer sb = new StringBuffer("\nMENU	:	" + getDisplayName() + "\n");
 
 		Iterator<MenuWidget> iterator = this.menu.iterator();
 
